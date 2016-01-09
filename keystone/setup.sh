@@ -2,22 +2,6 @@
 
 pushd /root
 
-# Checkout keystone
-if [ ! -d "/root/keystone" ]; then
-  git clone https://github.com/shivaram/keystone.git -b imagenet-research
-fi
-
-pushd /root/keystone
-
-# Build keystone
-git stash
-git pull
-sbt/sbt assembly
-make
-
-/root/spark-ec2/copy-dir /root/keystone
-
-popd
 
 # Build openblas and link it correctly
 
